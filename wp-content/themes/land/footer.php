@@ -10,25 +10,35 @@
  */
 
 ?>
-
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'land' ) ); ?>"><?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'land' ), 'WordPress' );
-			?></a>
-			<span class="sep"> | </span>
-			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'land' ), 'land', '<a href="https://automattic.com/">Underscores.me</a>' );
-			?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
+<footer class="l-footer">
+    <div class="mainWrap">
+        <div class="footer-contacts">
+            <?php
+            $contacts = get_field('contacts');
+            if ($contacts) {
+                foreach ($contacts as $contact) { ?>
+                    <div class="footer-contacts-item">
+                        <p class="footer-subtitle"><?= $contact['contacts_item_title']; ?></p>
+                        <p class="footer-text"><?= $contact['contacts_item_description']; ?></p>
+                    </div>
+                <?php }
+            } ?>
+        </div>
+        <div class="footer-social">
+            <a href="<?php the_field('facebook_link'); ?>">
+                <svg class="icon icon-fb-o">
+                    <use xlink:href="<?= get_template_directory_uri(); ?>/img/symbol-defs.svg#icon-fb-o"></use>
+                </svg>
+            </a>
+        </div>
+        <div class="footer-copyright"><?php the_field('footer_copyright'); ?></div>
+    </div>
+</footer>
+<style>
+    .l-footer {
+        background: url('<?php the_field('footer_image'); ?>') no-repeat center bottom;
+    }
+</style>
 <?php wp_footer(); ?>
-
 </body>
 </html>
