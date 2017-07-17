@@ -125,12 +125,13 @@ get_header(); ?>
                 </svg>
             </div>
             <h2 class="title-section center"><?php the_field('popup_form_title'); ?></h2>
-            <form>
-                <input type="text" placeholder="<?php the_field('popup_form_input_first_placeholder'); ?>">
-                <input type="text" placeholder="<?php the_field('popup_form_input_second_placeholder'); ?>">
-                <input type="text" placeholder="<?php the_field('popup_form_input_third_placeholder'); ?>">
-                <textarea placeholder="<?php the_field('popup_form_textarea_placeholder'); ?>"></textarea>
-                <button class="btn-general" type="submit"><?php the_field('popup_form_button_text'); ?>
+            <form id="static-form-2">
+                <input name="name" type="text" placeholder="<?php the_field('popup_form_input_first_placeholder'); ?>">
+                <input name="phone" type="text" placeholder="<?php the_field('popup_form_input_second_placeholder'); ?>">
+                <input required name="email" type="email" placeholder="<?php the_field('popup_form_input_third_placeholder'); ?>">
+                <input type="hidden" name="required-field" value="email">
+                <textarea name="text" placeholder="<?php the_field('popup_form_textarea_placeholder'); ?>"></textarea>
+                <button id="submit-static-form-2" class="btn-general" type="submit"><?php the_field('popup_form_button_text'); ?>
                     <svg class="icon icon-arrow-r">
                         <use xlink:href="<?= get_template_directory_uri(); ?>/img/symbol-defs.svg#icon-arrow-r"></use>
                     </svg>

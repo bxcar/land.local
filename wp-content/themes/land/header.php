@@ -113,8 +113,8 @@
             </div>
             <div class="header-consult-form-column">
                 <input name="name" type="text" placeholder="<?php the_field('input_first_placeholder'); ?>">
-                <input required name="email" type="text" placeholder="<?php the_field('input_second_placeholder'); ?>">
-                <input type="hidden" name="required-field" value="email" placeholder="<?php the_field('input_first_placeholder'); ?>">
+                <input required name="email" type="email" placeholder="<?php the_field('input_second_placeholder'); ?>">
+                <input type="hidden" name="required-field" value="email">
             </div>
             <div class="header-consult-form-column">
                 <input name="phone" type="text" placeholder="<?php the_field('input_third_placeholder'); ?>">
@@ -123,7 +123,6 @@
                         <use xlink:href="<?= get_template_directory_uri(); ?>/img/symbol-defs.svg#icon-arrow-r"></use>
                     </svg>
                 </button>
-<!--                <input type="submit" id="submit-static-form" value="Отправить">-->
             </div>
         </div>
     </form>

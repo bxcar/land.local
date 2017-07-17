@@ -144,7 +144,7 @@ $('.products-popup-wrap').on('click', function(event) {
     }, 400);
   }
 });
-
+/*
 $('.products-popup form').on('submit', function(event) {
   event.preventDefault();
   /// Function when Form send was success
@@ -160,7 +160,7 @@ $('.products-popup form').on('submit', function(event) {
     $('.products-popup').append( form );
   }, 10000);
   /// End of Form send Success
-});
+});*/
 
 /*** Horizontal block - Responsive height ***/
 setResponsiveHeight({
