@@ -25,6 +25,7 @@
             background: url('<?php the_field('background_image'); ?>') no-repeat center;
         }
     </style>
+    <?php include_once "js/form-ajax.php" ?>
 </head>
 <body>
 <div class="l-header">
@@ -105,22 +106,24 @@
         <h1 class="header-title-title"><?php the_field('title_second'); ?></h1>
         <p class="header-title-subtitle orange-darken"><?php the_field('title_third'); ?></p>
     </div>
-    <form class="header-consult-form">
+    <form class="header-consult-form" id="static-form">
         <div class="header-consult-form-row">
             <div class="header-consult-form-column">
-                <textarea placeholder="<?php the_field('textarea_placeholder'); ?>"></textarea>
+                <textarea name="text" placeholder="<?php the_field('textarea_placeholder'); ?>"></textarea>
             </div>
             <div class="header-consult-form-column">
-                <input type="text" placeholder="<?php the_field('input_first_placeholder'); ?>">
-                <input type="text" placeholder="<?php the_field('input_second_placeholder'); ?>">
+                <input name="name" type="text" placeholder="<?php the_field('input_first_placeholder'); ?>">
+                <input required name="email" type="text" placeholder="<?php the_field('input_second_placeholder'); ?>">
+                <input type="hidden" name="required-field" value="email" placeholder="<?php the_field('input_first_placeholder'); ?>">
             </div>
             <div class="header-consult-form-column">
-                <input type="text" placeholder="<?php the_field('input_third_placeholder'); ?>">
-                <button class="btn-general" type="submit"><?php the_field('button_text'); ?>
+                <input name="phone" type="text" placeholder="<?php the_field('input_third_placeholder'); ?>">
+                <button id="submit-static-form" class="btn-general" type="submit"><?php the_field('button_text'); ?>
                     <svg class="icon icon-arrow-r">
                         <use xlink:href="<?= get_template_directory_uri(); ?>/img/symbol-defs.svg#icon-arrow-r"></use>
                     </svg>
                 </button>
+<!--                <input type="submit" id="submit-static-form" value="Отправить">-->
             </div>
         </div>
     </form>
