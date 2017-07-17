@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta http-equiv="x-rim-auto-match" content="none">
-    <title><?php bloginfo( 'name' ); ?></title>
+    <title><?php bloginfo('name'); ?></title>
     <link rel="shortcut icon" href="<?= get_template_directory_uri(); ?>/img/favicon/favicon.ico" type="image/png">
     <?php wp_head(); ?>
     <style>
@@ -36,19 +36,38 @@
                         <svg class="icon icon-menu">
                             <use xlink:href="<?= get_template_directory_uri(); ?>/img/symbol-defs.svg#icon-menu"></use>
                         </svg>
-                        <span>menu</span>
+                        <span><?php the_field('menu_title'); ?></span>
                     </li>
-                    <li class="menu-text"><span class="header-dropdown header-button">Rus<i
-                                    class="fa fa-angle-down"></i></span>
+                    <li class="menu-text">
+                        <?php $languages = icl_get_languages('skip_missing=0');
+                        foreach ($languages as $l) {
+                            if ($l['language_code'] == 'ru') {
+                                $l['language_code'] = 'RUS';
+                            } elseif ($l['language_code'] == 'en') {
+                                $l['language_code'] = 'ENG';
+                            }
+                            if ($l['active']) {
+                                $active_lang_code = $l['language_code'];
+                            } else {
+                                $lang_code = $l['language_code'];
+                                $lang_url = $l['url'];
+                            }
+                        } ?>
+                        <span class="header-dropdown header-button"><?= $active_lang_code ?>
+                            <i class="fa fa-angle-down"></i>
+                        </span>
                         <div class="header-dropmenu-wrap is-hidden">
-                            <ul class="header-dropmenu">
-                                <li>Eng</li>
-                            </ul>
+                            <a href="<?= $lang_url ?>">
+                                <ul class="header-dropmenu">
+                                    <li><?= $lang_code ?></li>
+                                </ul>
+                            </a>
                         </div>
                     </li>
                 </ul>
             </div>
-            <div class="top-bar-left text-center"><a class="header-logo" href="<?php home_url(); ?>"><img src="<?php the_field('logo'); ?>"></a>
+            <div class="top-bar-left text-center"><a class="header-logo" href="<?php home_url(); ?>"><img
+                            src="<?php the_field('logo'); ?>"></a>
             </div>
             <div class="top-bar-right">
                 <ul class="menu align-right header-menu">
@@ -76,7 +95,8 @@
                 <li><a class="innerMenu-link" href="#offers"><?= get_field('menu')[1]['menu_item_title']; ?></a></li>
                 <li><a class="innerMenu-link" href="#about"><?= get_field('menu')[2]['menu_item_title']; ?></a></li>
                 <li><a class="innerMenu-link" href="#partners"><?= get_field('menu')[3]['menu_item_title']; ?></a></li>
-                <li><a class="innerMenu-link" href="#additional"><?= get_field('menu')[4]['menu_item_title']; ?></a></li>
+                <li><a class="innerMenu-link" href="#additional"><?= get_field('menu')[4]['menu_item_title']; ?></a>
+                </li>
             </ul>
         </div>
     </div>
